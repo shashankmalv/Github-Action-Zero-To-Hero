@@ -6,49 +6,42 @@
 <title>Shashank Malviya | DevOps Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/4ad53f6a2e.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  background:#0f2027;
   color:white;
-  transition:0.4s ease;
   overflow-x:hidden;
+  transition:.5s;
+  cursor:none;
 }
+.light{background:#f4f7fa;color:#111}
 
-.light{
-  background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
-  color:#111;
-}
-
-/* Animated Background */
-body::before{
-  content:"";
+/* CUSTOM CURSOR */
+.cursor{
+  width:15px;height:15px;
+  border:2px solid #00c6ff;
+  border-radius:50%;
   position:fixed;
-  width:500px;
-  height:500px;
-  background:radial-gradient(circle,#00c6ff,#ff00cc);
-  filter:blur(140px);
-  top:-150px;
-  left:-150px;
-  animation:move 8s infinite alternate ease-in-out;
-  z-index:-1;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:.1s;
+  z-index:9999;
+}
+.cursor-follower{
+  width:40px;height:40px;
+  background:#00c6ff33;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:.15s;
+  z-index:9998;
 }
 
-@keyframes move{
-  from{transform:translateY(0)}
-  to{transform:translateY(60px)}
-}
-
-/* Navbar */
+/* NAV */
 nav{
   position:fixed;
   width:90%;
@@ -57,27 +50,14 @@ nav{
   padding:15px 30px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  border-radius:20px;
   backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.2);
-  z-index:100;
+  border-radius:20px;
+  z-index:1000;
 }
+nav a{color:inherit;text-decoration:none;margin:0 15px}
 
-nav a{
-  text-decoration:none;
-  color:inherit;
-  margin:0 15px;
-  font-size:14px;
-}
-
-.toggle{
-  cursor:pointer;
-  font-size:20px;
-}
-
-/* Hero */
+/* HERO */
 .hero{
   height:100vh;
   display:flex;
@@ -85,203 +65,177 @@ nav a{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:0 10%;
+  position:relative;
 }
-
-.hero h1{
-  font-size:60px;
-  font-weight:800;
-}
-
+.hero h1{font-size:70px;font-weight:800}
 .gradient{
   background:linear-gradient(90deg,#00c6ff,#ff00cc);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.typing{
-  font-size:26px;
-  margin-top:15px;
+/* LIQUID BG */
+.liquid{
+  position:absolute;
+  width:600px;height:600px;
+  background:linear-gradient(45deg,#00c6ff,#ff00cc);
+  filter:blur(120px);
+  opacity:.4;
+  border-radius:40%;
+  animation:morph 8s infinite alternate ease-in-out;
+  z-index:-1;
+}
+@keyframes morph{
+  0%{border-radius:40% 60% 60% 40% / 40% 40% 60% 60%;}
+  100%{border-radius:60% 40% 40% 60% / 60% 60% 40% 40%;}
 }
 
-.cursor{
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:0}
-}
-
+/* SECTION */
 section{
-  padding:120px 10%;
+  padding:150px 10%;
+  opacity:0;
+  transform:translateY(100px);
+  transition:1s;
 }
-
-.section-title{
-  font-size:40px;
-  margin-bottom:60px;
-  text-align:center;
-}
-
-/* Glass Cards */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+section.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .card{
-  padding:30px;
+  padding:40px;
   border-radius:25px;
   backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.2);
-  transition:0.4s;
+  transition:.4s;
 }
-
 .card:hover{
-  transform:translateY(-10px) scale(1.05);
+  transform:scale(1.05);
   box-shadow:0 30px 60px rgba(0,0,0,0.4);
 }
 
-/* Tools Section */
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:30px;
-  text-align:center;
+/* MAGNETIC BUTTON */
+.btn{
+  display:inline-block;
+  padding:15px 35px;
+  margin:20px;
+  border-radius:50px;
+  background:linear-gradient(90deg,#00c6ff,#ff00cc);
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+  position:relative;
 }
 
-.tool{
-  padding:20px;
-  border-radius:20px;
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,0.08);
-  transition:0.3s;
-}
-
-.tool:hover{
-  transform:scale(1.1);
-}
-
-.tool i{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-/* Footer */
-footer{
-  text-align:center;
-  padding:40px;
-  opacity:0.7;
+footer{text-align:center;padding:50px}
+canvas#threeCanvas{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-2;
 }
 </style>
 </head>
 
 <body>
 
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
 <nav>
   <h3>Shashank Malviya</h3>
   <div>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#tools">Tools</a>
-    <a href="#projects">Projects</a>
-    <span class="toggle" onclick="toggleTheme()">☀️</span>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
+  <canvas id="threeCanvas"></canvas>
+  <div class="liquid"></div>
   <h1>Hi, I'm <span class="gradient">Shashank</span></h1>
-  <h3 class="typing"><span id="typing-text"></span><span class="cursor">|</span></h3>
-  <p>
-    DevOps Engineer with 3+ years of experience in AWS, Kubernetes,
-    Terraform and Enterprise Monitoring solutions.
-  </p>
+  <p>DevOps Engineer | Cloud Architect | Kubernetes Specialist</p>
+  <div>
+    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" class="btn" target="_blank">LinkedIn</a>
+    <a href="https://github.com/shashankmalv?tab=repositories" class="btn" target="_blank">GitHub</a>
+    <a href="mailto:malviyashashank24@gmail.com" class="btn">Email Me</a>
+  </div>
 </section>
 
 <section id="about">
-  <h2 class="section-title">About Me</h2>
   <div class="card">
-    Experienced DevOps & Cloud Engineer skilled in building scalable,
-    automated and secure infrastructure. Strong expertise in CI/CD,
-    Kubernetes orchestration, monitoring optimization and infrastructure as code.
+    <h2>About Me</h2>
+    <p>I design scalable Kubernetes infrastructure, automate cloud systems and build enterprise CI/CD pipelines.</p>
   </div>
 </section>
 
-<section id="skills">
-  <h2 class="section-title">Core Expertise</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Cloud & DevOps</h3>
-      <p>AWS, EKS, IAM, Lambda, Terraform</p>
-    </div>
-    <div class="card">
-      <h3>Containers</h3>
-      <p>Docker, Kubernetes, Helm, GitOps</p>
-    </div>
-    <div class="card">
-      <h3>Monitoring</h3>
-      <p>Splunk, AppDynamics, Prometheus</p>
-    </div>
-    <div class="card">
-      <h3>CI/CD</h3>
-      <p>Jenkins, GitHub Actions, Bash, Python</p>
-    </div>
+<section id="contact">
+  <div class="card">
+    <h2>Let's Connect</h2>
+    <p>Email: malviyashashank24@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/shashank-malviya-devops</p>
+    <p>GitHub: github.com/shashankmalv</p>
   </div>
 </section>
 
-<section id="tools">
-  <h2 class="section-title">Tools & Technologies</h2>
-  <div class="tools">
-    <div class="tool"><i class="fab fa-aws"></i><p>AWS</p></div>
-    <div class="tool"><i class="fab fa-docker"></i><p>Docker</p></div>
-    <div class="tool"><i class="fas fa-network-wired"></i><p>Kubernetes</p></div>
-    <div class="tool"><i class="fas fa-code-branch"></i><p>Terraform</p></div>
-    <div class="tool"><i class="fas fa-chart-line"></i><p>Prometheus</p></div>
-    <div class="tool"><i class="fas fa-server"></i><p>Splunk</p></div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2 class="section-title">Highlighted Projects</h2>
-  <div class="grid">
-    <div class="card">
-      CI/CD Automation Pipeline using Jenkins & GitHub Actions
-    </div>
-    <div class="card">
-      Kubernetes Observability Stack (Prometheus + Grafana)
-    </div>
-    <div class="card">
-      Infrastructure Automation using Terraform
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 Shashank Malviya
-</footer>
+<footer>© 2026 Shashank Malviya</footer>
 
 <script>
-// Typing Effect
-const roles=["DevOps Engineer","Cloud Architect","Kubernetes Specialist","Automation Expert"];
-let i=0,j=0,current="",isDeleting=false;
-
-function type(){
-  current=roles[i];
-  if(!isDeleting){
-    document.getElementById("typing-text").innerHTML=current.substring(0,j++);
-    if(j>current.length){isDeleting=true;setTimeout(type,1000);return;}
-  }else{
-    document.getElementById("typing-text").innerHTML=current.substring(0,j--);
-    if(j<0){isDeleting=false;i=(i+1)%roles.length;}
-  }
-  setTimeout(type,70);
+// THREE JS HERO
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('threeCanvas'),alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+const geometry=new THREE.TorusKnotGeometry(1,0.4,100,16);
+const material=new THREE.MeshStandardMaterial({color:0x00c6ff,metalness:0.7,roughness:0.2});
+const knot=new THREE.Mesh(geometry,material);
+scene.add(knot);
+const light=new THREE.PointLight(0xffffff,1);
+light.position.set(5,5,5);
+scene.add(light);
+camera.position.z=4;
+function animate(){
+ requestAnimationFrame(animate);
+ knot.rotation.x+=0.01;
+ knot.rotation.y+=0.01;
+ renderer.render(scene,camera);
 }
-type();
+animate();
 
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
+// SCROLL STORYTELLING
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+ sections.forEach(sec=>{
+   const top=sec.getBoundingClientRect().top;
+   if(top<window.innerHeight-100){
+     sec.classList.add("show");
+   }
+ });
+});
+
+// MAGNETIC BUTTON
+document.querySelectorAll(".btn").forEach(btn=>{
+ btn.addEventListener("mousemove",e=>{
+   const rect=btn.getBoundingClientRect();
+   const x=e.clientX-rect.left-rect.width/2;
+   const y=e.clientY-rect.top-rect.height/2;
+   btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
+ });
+ btn.addEventListener("mouseleave",()=>{
+   btn.style.transform="translate(0,0)";
+ });
+});
+
+// CUSTOM CURSOR
+const cursor=document.querySelector(".cursor");
+const follower=document.querySelector(".cursor-follower");
+document.addEventListener("mousemove",e=>{
+ cursor.style.left=e.clientX+"px";
+ cursor.style.top=e.clientY+"px";
+ follower.style.left=e.clientX+"px";
+ follower.style.top=e.clientY+"px";
+});
 </script>
 
 </body>
