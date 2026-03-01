@@ -10,34 +10,58 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
+:root{
+  --bg1:#0f172a;
+  --bg2:#1e293b;
+  --card-bg:rgba(255,255,255,0.08);
+  --text:#f1f5f9;
+  --subtext:#cbd5e1;
+  --accent:#38bdf8;
+}
+
+.light{
+  --bg1:#e2e8f0;
+  --bg2:#f8fafc;
+  --card-bg:rgba(255,255,255,0.6);
+  --text:#0f172a;
+  --subtext:#334155;
+  --accent:#2563eb;
+}
+
 body{
-  background:#0c111b;
-  color:#e6edf3;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  transition:.4s;
   line-height:1.6;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
   position:fixed;
-  top:0;
-  width:100%;
-  padding:20px 8%;
+  width:90%;
+  left:5%;
+  top:20px;
+  padding:18px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#0c111be6;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(18px);
+  background:var(--card-bg);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
   z-index:1000;
 }
-nav h3{font-weight:700}
 nav a{
-  color:#c9d1d9;
+  color:var(--subtext);
   text-decoration:none;
-  margin-left:30px;
-  font-weight:500;
-  transition:.3s;
+  margin-left:25px;
 }
-nav a:hover{color:#58a6ff}
+nav a:hover{color:var(--accent)}
+.toggle{
+  cursor:pointer;
+  margin-left:20px;
+  font-size:18px;
+}
 
 /* HERO */
 .hero{
@@ -48,98 +72,75 @@ nav a:hover{color:#58a6ff}
   align-items:center;
   text-align:center;
   padding:0 20px;
-  background:radial-gradient(circle at top,#161b22,#0c111b);
 }
 .hero h1{
-  font-size:58px;
+  font-size:56px;
   font-weight:800;
-  background:linear-gradient(90deg,#58a6ff,#00d4ff);
+  background:linear-gradient(90deg,var(--accent),#818cf8);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 .hero p{
   margin-top:20px;
-  font-size:20px;
-  color:#8b949e;
-  max-width:700px;
+  color:var(--subtext);
+  max-width:800px;
 }
-.buttons{margin-top:30px}
 .btn{
-  display:inline-block;
-  padding:14px 30px;
-  margin:10px;
-  border-radius:8px;
-  background:#238636;
-  color:#fff;
+  margin:25px 10px;
+  padding:14px 32px;
+  border-radius:40px;
+  background:var(--accent);
+  color:white;
   text-decoration:none;
   font-weight:600;
   transition:.3s;
 }
-.btn.secondary{background:#1f6feb}
 .btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(88,166,255,.3);
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(56,189,248,.4);
 }
 
-/* SECTIONS */
-section{
-  padding:120px 8%;
-}
+/* SECTION */
+section{padding:120px 10%}
 .section-title{
   text-align:center;
   font-size:36px;
   margin-bottom:60px;
-  font-weight:700;
 }
 
-/* TOOL GRID */
-.tools-grid{
+/* GRID */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
-.tool-card{
-  background:#161b22;
-  padding:40px;
-  border-radius:12px;
-  text-align:center;
-  transition:.3s;
-  border:1px solid #21262d;
+/* CARD */
+.card{
+  backdrop-filter:blur(20px);
+  background:var(--card-bg);
+  border-radius:20px;
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:.4s;
 }
-.tool-card:hover{
-  transform:translateY(-6px);
-  border-color:#58a6ff;
-  box-shadow:0 10px 30px rgba(88,166,255,.2);
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
 }
-.tool-card img{
-  height:60px;
+.card img{
+  height:55px;
   margin-bottom:20px;
 }
-.tool-card h3{
-  margin-bottom:10px;
-  font-size:18px;
-}
-.tool-card p{
-  font-size:14px;
-  color:#8b949e;
-}
-
-/* ABOUT */
-.about-text{
-  max-width:800px;
-  margin:auto;
-  text-align:center;
-  color:#8b949e;
-  font-size:18px;
-}
+.card h3{margin-bottom:15px}
+.card ul{padding-left:20px;color:var(--subtext)}
+.card li{margin-bottom:8px;font-size:14px}
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:60px 20px;
-  background:#161b22;
-  color:#6e7681;
+  padding:60px;
+  color:var(--subtext);
 }
 </style>
 </head>
@@ -150,73 +151,127 @@ footer{
   <h3>Shashank Malviya</h3>
   <div>
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#tools">Tools</a>
     <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleTheme()">🌙</span>
   </div>
 </nav>
 
 <section class="hero">
   <h1>DevOps • Cloud • AI Engineer</h1>
   <p>
-    Designing scalable AWS infrastructure, Kubernetes platforms,
-    automated CI/CD pipelines and AI-ready cloud systems.
+    Designing scalable AWS cloud infrastructure, Kubernetes platforms,
+    automated CI/CD pipelines and AI-integrated cloud solutions
+    with security, reliability and performance at scale.
   </p>
 
-  <div class="buttons">
-    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" target="_blank" class="btn secondary">LinkedIn</a>
+  <div>
+    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" target="_blank" class="btn">LinkedIn</a>
     <a href="https://github.com/shashankmalv?tab=repositories" target="_blank" class="btn">GitHub</a>
-    <a href="mailto:malviyashashank24@gmail.com" class="btn secondary">Email</a>
+    <a href="mailto:malviyashashank24@gmail.com" class="btn">Email</a>
   </div>
 </section>
 
 <section id="about">
-  <h2 class="section-title">About Me</h2>
-  <p class="about-text">
-    DevOps & Cloud Engineer with hands-on expertise in AWS, Terraform,
-    Kubernetes and CI/CD automation. I build secure, scalable,
-    production-ready infrastructure and AI-integrated cloud environments.
+  <h2 class="section-title">Professional Summary</h2>
+  <p style="max-width:900px;margin:auto;text-align:center;color:var(--subtext)">
+    DevOps & Cloud Engineer with strong experience in AWS, Terraform, Kubernetes,
+    Docker, CI/CD automation and cloud security. Experienced in building scalable,
+    production-grade infrastructure with Infrastructure-as-Code and automation-first
+    approach. Passionate about AI-driven cloud systems and platform engineering.
   </p>
 </section>
 
+<section id="experience">
+  <h2 class="section-title">Professional Experience</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Cloud Infrastructure Engineering</h3>
+      <ul>
+        <li>Designed and deployed scalable AWS infrastructure (EC2, VPC, S3, IAM, RDS, EKS)</li>
+        <li>Built high-availability architecture with load balancing and auto-scaling</li>
+        <li>Implemented secure IAM policies and network segmentation</li>
+        <li>Reduced infrastructure provisioning time by 60% using Terraform</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>CI/CD & DevOps Automation</h3>
+      <ul>
+        <li>Built end-to-end CI/CD pipelines using Jenkins & GitHub Actions</li>
+        <li>Automated Docker builds and Kubernetes deployments</li>
+        <li>Integrated security scans in pipeline (DevSecOps)</li>
+        <li>Reduced deployment failures by 40%</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Kubernetes & Containerization</h3>
+      <ul>
+        <li>Containerized applications using Docker</li>
+        <li>Managed Kubernetes clusters with EKS</li>
+        <li>Implemented rolling deployments & health checks</li>
+        <li>Optimized cluster resource usage</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Monitoring & Reliability</h3>
+      <ul>
+        <li>Configured CloudWatch monitoring and alerting</li>
+        <li>Implemented log aggregation & performance monitoring</li>
+        <li>Improved system uptime and reduced downtime incidents</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>AI & Cloud Integration</h3>
+      <ul>
+        <li>Deployed AI-ready infrastructure on AWS</li>
+        <li>Integrated ML workloads in containerized environments</li>
+        <li>Optimized GPU-based cloud compute resources</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
 <section id="tools">
-  <h2 class="section-title">Core Tools & Technologies</h2>
+  <h2 class="section-title">Core Technologies</h2>
 
-  <div class="tools-grid">
+  <div class="grid">
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg">
       <h3>AWS</h3>
-      <p>Cloud architecture, EC2, S3, IAM, RDS, VPC, EKS.</p>
     </div>
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/terraform/7B42BC" alt="Terraform">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg">
       <h3>Terraform</h3>
-      <p>Infrastructure as Code & automated provisioning.</p>
     </div>
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">
       <h3>Kubernetes</h3>
-      <p>Container orchestration & cluster management.</p>
     </div>
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">
       <h3>Docker</h3>
-      <p>Containerization & microservices architecture.</p>
     </div>
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/jenkins/D24939" alt="Jenkins">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg">
       <h3>Jenkins</h3>
-      <p>CI/CD automation pipelines.</p>
     </div>
 
-    <div class="tool-card">
-      <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub">
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
       <h3>GitHub</h3>
-      <p>Version control & GitHub Actions workflows.</p>
     </div>
 
   </div>
@@ -224,7 +279,7 @@ footer{
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-  <p class="about-text">
+  <p style="text-align:center;color:var(--subtext)">
     Email: malviyashashank24@gmail.com <br>
     LinkedIn: linkedin.com/in/shashank-malviya-devops <br>
     GitHub: github.com/shashankmalv
@@ -234,6 +289,14 @@ footer{
 <footer>
   © 2026 Shashank Malviya | DevOps Engineer
 </footer>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  const icon=document.querySelector(".toggle");
+  icon.textContent=document.body.classList.contains("light")?"☀️":"🌙";
+}
+</script>
 
 </body>
 </html>
