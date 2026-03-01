@@ -10,22 +10,25 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
+/* 🔥 NEW PREMIUM THEME */
 :root{
-  --bg1:#0f172a;
-  --bg2:#1e293b;
-  --card:rgba(255,255,255,0.06);
-  --text:#f1f5f9;
-  --sub:#cbd5e1;
-  --accent:#38bdf8;
+  --bg1:#0a0a0f;
+  --bg2:#141420;
+  --card:rgba(255,255,255,0.05);
+  --text:#ffffff;
+  --sub:#a1a1aa;
+  --accent:#7c3aed;
+  --accent2:#22d3ee;
 }
 
 .light{
-  --bg1:#e2e8f0;
-  --bg2:#f8fafc;
+  --bg1:#f4f4f5;
+  --bg2:#e4e4e7;
   --card:rgba(255,255,255,0.7);
-  --text:#0f172a;
-  --sub:#334155;
-  --accent:#2563eb;
+  --text:#111827;
+  --sub:#4b5563;
+  --accent:#6d28d9;
+  --accent2:#0ea5e9;
 }
 
 body{
@@ -47,18 +50,19 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
   background:var(--card);
   border-radius:20px;
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.08);
   z-index:1000;
 }
 nav a{
   color:var(--sub);
   text-decoration:none;
   margin-left:25px;
+  font-weight:500;
 }
-nav a:hover{color:var(--accent)}
+nav a:hover{color:var(--accent2)}
 .toggle{cursor:pointer;font-size:18px;margin-left:20px}
 
 /* HERO */
@@ -73,10 +77,10 @@ nav a:hover{color:var(--accent)}
 .hero::before{
   content:"";
   position:absolute;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle, rgba(56,189,248,.25), transparent 70%);
-  top:20%;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle, rgba(124,58,237,.25), transparent 70%);
+  top:15%;
   left:50%;
   transform:translateX(-50%);
   z-index:-1;
@@ -84,17 +88,17 @@ nav a:hover{color:var(--accent)}
 .hero-box{
   max-width:900px;
   text-align:center;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
   background:var(--card);
-  padding:60px;
+  padding:70px;
   border-radius:30px;
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.08);
 }
 .hero h1{
   font-size:60px;
   font-weight:800;
   margin-bottom:25px;
-  background:linear-gradient(90deg,var(--accent),#818cf8);
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -112,7 +116,7 @@ nav a:hover{color:var(--accent)}
   transition:.3s;
 }
 .primary{
-  background:linear-gradient(90deg,var(--accent),#6366f1);
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
   color:white;
 }
 .secondary{
@@ -121,7 +125,7 @@ nav a:hover{color:var(--accent)}
 }
 .btn:hover{
   transform:translateY(-4px);
-  box-shadow:0 10px 30px rgba(56,189,248,.4);
+  box-shadow:0 10px 30px rgba(124,58,237,.4);
 }
 
 /* SECTIONS */
@@ -143,19 +147,20 @@ section{padding:120px 8%}
   background:var(--card);
   padding:30px;
   border-radius:20px;
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.08);
   transition:.3s;
+  text-align:center;
 }
 .card:hover{
   transform:translateY(-6px);
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
 .card img{
-  height:55px;
+  height:60px;
   margin-bottom:15px;
 }
 .card h3{margin-bottom:15px}
-.card ul{padding-left:18px;color:var(--sub)}
+.card ul{padding-left:18px;color:var(--sub);text-align:left}
 .card li{margin-bottom:8px;font-size:14px}
 
 /* FOOTER */
@@ -183,9 +188,9 @@ footer{
   <div class="hero-box">
     <h1>DevOps • Cloud • AI Engineer</h1>
     <p>
-      Designing scalable AWS cloud infrastructure, Kubernetes platforms,
-      automated CI/CD pipelines and AI-ready systems with reliability,
-      security and performance at scale.
+      Designing scalable AWS infrastructure, Kubernetes platforms,
+      automated CI/CD pipelines and AI-ready systems
+      with security and reliability at scale.
     </p>
 
     <div class="buttons">
@@ -203,14 +208,14 @@ footer{
     <div class="card">
       <h3>Cloud Infrastructure</h3>
       <ul>
-        <li>Designed AWS architecture (EC2, S3, IAM, VPC, RDS, EKS)</li>
-        <li>Implemented auto-scaling & load balancing</li>
-        <li>Reduced provisioning time 60% using Terraform</li>
+        <li>Architected AWS (EC2, VPC, S3, RDS, IAM, EKS)</li>
+        <li>Implemented auto-scaling & HA setup</li>
+        <li>Reduced infra provisioning time 60% via Terraform</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>CI/CD Automation</h3>
+      <h3>CI/CD & Automation</h3>
       <ul>
         <li>Built Jenkins & GitHub Actions pipelines</li>
         <li>Automated Docker builds & K8s deployments</li>
@@ -219,11 +224,11 @@ footer{
     </div>
 
     <div class="card">
-      <h3>Kubernetes & Containers</h3>
+      <h3>Kubernetes Engineering</h3>
       <ul>
         <li>Managed EKS clusters</li>
         <li>Rolling deployments & scaling</li>
-        <li>Optimized container workloads</li>
+        <li>Optimized container performance</li>
       </ul>
     </div>
 
@@ -234,8 +239,9 @@ footer{
   <h2 class="section-title">Core Technologies</h2>
   <div class="grid">
 
+    <!-- ✅ Stable AWS Logo -->
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg">
       <h3>AWS</h3>
     </div>
 
