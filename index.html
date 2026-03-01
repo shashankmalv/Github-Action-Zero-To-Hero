@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shashank Malviya | DevOps Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
@@ -13,18 +13,18 @@
 :root{
   --bg1:#0f172a;
   --bg2:#1e293b;
-  --card-bg:rgba(255,255,255,0.08);
+  --card:rgba(255,255,255,0.06);
   --text:#f1f5f9;
-  --subtext:#cbd5e1;
+  --sub:#cbd5e1;
   --accent:#38bdf8;
 }
 
 .light{
   --bg1:#e2e8f0;
   --bg2:#f8fafc;
-  --card-bg:rgba(255,255,255,0.6);
+  --card:rgba(255,255,255,0.7);
   --text:#0f172a;
-  --subtext:#334155;
+  --sub:#334155;
   --accent:#2563eb;
 }
 
@@ -38,70 +38,94 @@ body{
 /* NAV */
 nav{
   position:fixed;
-  width:90%;
-  left:5%;
   top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:1100px;
   padding:18px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(18px);
-  background:var(--card-bg);
+  backdrop-filter:blur(20px);
+  background:var(--card);
   border-radius:20px;
   border:1px solid rgba(255,255,255,0.1);
   z-index:1000;
 }
 nav a{
-  color:var(--subtext);
+  color:var(--sub);
   text-decoration:none;
   margin-left:25px;
 }
 nav a:hover{color:var(--accent)}
-.toggle{
-  cursor:pointer;
-  margin-left:20px;
-  font-size:18px;
-}
+.toggle{cursor:pointer;font-size:18px;margin-left:20px}
 
 /* HERO */
 .hero{
-  height:100vh;
+  min-height:100vh;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  padding:0 8%;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(56,189,248,.25), transparent 70%);
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:-1;
+}
+.hero-box{
+  max-width:900px;
   text-align:center;
-  padding:0 20px;
+  backdrop-filter:blur(20px);
+  background:var(--card);
+  padding:60px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.1);
 }
 .hero h1{
-  font-size:56px;
+  font-size:60px;
   font-weight:800;
+  margin-bottom:25px;
   background:linear-gradient(90deg,var(--accent),#818cf8);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 .hero p{
-  margin-top:20px;
-  color:var(--subtext);
-  max-width:800px;
+  color:var(--sub);
+  font-size:18px;
 }
+.buttons{margin-top:40px}
 .btn{
-  margin:25px 10px;
-  padding:14px 32px;
+  padding:14px 36px;
   border-radius:40px;
-  background:var(--accent);
-  color:white;
   text-decoration:none;
   font-weight:600;
+  margin:10px;
   transition:.3s;
+}
+.primary{
+  background:linear-gradient(90deg,var(--accent),#6366f1);
+  color:white;
+}
+.secondary{
+  border:1px solid var(--accent);
+  color:var(--accent);
 }
 .btn:hover{
   transform:translateY(-4px);
   box-shadow:0 10px 30px rgba(56,189,248,.4);
 }
 
-/* SECTION */
-section{padding:120px 10%}
+/* SECTIONS */
+section{padding:120px 8%}
 .section-title{
   text-align:center;
   font-size:36px;
@@ -114,33 +138,31 @@ section{padding:120px 10%}
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
 }
-
-/* CARD */
 .card{
   backdrop-filter:blur(20px);
-  background:var(--card-bg);
-  border-radius:20px;
+  background:var(--card);
   padding:30px;
+  border-radius:20px;
   border:1px solid rgba(255,255,255,0.1);
-  transition:.4s;
+  transition:.3s;
 }
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  transform:translateY(-6px);
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 .card img{
   height:55px;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 .card h3{margin-bottom:15px}
-.card ul{padding-left:20px;color:var(--subtext)}
+.card ul{padding-left:18px;color:var(--sub)}
 .card li{margin-bottom:8px;font-size:14px}
 
 /* FOOTER */
 footer{
   text-align:center;
   padding:60px;
-  color:var(--subtext);
+  color:var(--sub);
 }
 </style>
 </head>
@@ -148,9 +170,8 @@ footer{
 <body>
 
 <nav>
-  <h3>Shashank Malviya</h3>
+  <strong>Shashank Malviya</strong>
   <div>
-    <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#tools">Tools</a>
     <a href="#contact">Contact</a>
@@ -159,80 +180,50 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1>DevOps • Cloud • AI Engineer</h1>
-  <p>
-    Designing scalable AWS cloud infrastructure, Kubernetes platforms,
-    automated CI/CD pipelines and AI-integrated cloud solutions
-    with security, reliability and performance at scale.
-  </p>
+  <div class="hero-box">
+    <h1>DevOps • Cloud • AI Engineer</h1>
+    <p>
+      Designing scalable AWS cloud infrastructure, Kubernetes platforms,
+      automated CI/CD pipelines and AI-ready systems with reliability,
+      security and performance at scale.
+    </p>
 
-  <div>
-    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" target="_blank" class="btn">LinkedIn</a>
-    <a href="https://github.com/shashankmalv?tab=repositories" target="_blank" class="btn">GitHub</a>
-    <a href="mailto:malviyashashank24@gmail.com" class="btn">Email</a>
+    <div class="buttons">
+      <a href="https://www.linkedin.com/in/shashank-malviya-devops/" target="_blank" class="btn primary">LinkedIn</a>
+      <a href="https://github.com/shashankmalv?tab=repositories" target="_blank" class="btn secondary">GitHub</a>
+      <a href="mailto:malviyashashank24@gmail.com" class="btn secondary">Email</a>
+    </div>
   </div>
-</section>
-
-<section id="about">
-  <h2 class="section-title">Professional Summary</h2>
-  <p style="max-width:900px;margin:auto;text-align:center;color:var(--subtext)">
-    DevOps & Cloud Engineer with strong experience in AWS, Terraform, Kubernetes,
-    Docker, CI/CD automation and cloud security. Experienced in building scalable,
-    production-grade infrastructure with Infrastructure-as-Code and automation-first
-    approach. Passionate about AI-driven cloud systems and platform engineering.
-  </p>
 </section>
 
 <section id="experience">
   <h2 class="section-title">Professional Experience</h2>
-
   <div class="grid">
 
     <div class="card">
-      <h3>Cloud Infrastructure Engineering</h3>
+      <h3>Cloud Infrastructure</h3>
       <ul>
-        <li>Designed and deployed scalable AWS infrastructure (EC2, VPC, S3, IAM, RDS, EKS)</li>
-        <li>Built high-availability architecture with load balancing and auto-scaling</li>
-        <li>Implemented secure IAM policies and network segmentation</li>
-        <li>Reduced infrastructure provisioning time by 60% using Terraform</li>
+        <li>Designed AWS architecture (EC2, S3, IAM, VPC, RDS, EKS)</li>
+        <li>Implemented auto-scaling & load balancing</li>
+        <li>Reduced provisioning time 60% using Terraform</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>CI/CD & DevOps Automation</h3>
+      <h3>CI/CD Automation</h3>
       <ul>
-        <li>Built end-to-end CI/CD pipelines using Jenkins & GitHub Actions</li>
-        <li>Automated Docker builds and Kubernetes deployments</li>
-        <li>Integrated security scans in pipeline (DevSecOps)</li>
-        <li>Reduced deployment failures by 40%</li>
+        <li>Built Jenkins & GitHub Actions pipelines</li>
+        <li>Automated Docker builds & K8s deployments</li>
+        <li>Integrated DevSecOps security checks</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>Kubernetes & Containerization</h3>
+      <h3>Kubernetes & Containers</h3>
       <ul>
-        <li>Containerized applications using Docker</li>
-        <li>Managed Kubernetes clusters with EKS</li>
-        <li>Implemented rolling deployments & health checks</li>
-        <li>Optimized cluster resource usage</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Monitoring & Reliability</h3>
-      <ul>
-        <li>Configured CloudWatch monitoring and alerting</li>
-        <li>Implemented log aggregation & performance monitoring</li>
-        <li>Improved system uptime and reduced downtime incidents</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>AI & Cloud Integration</h3>
-      <ul>
-        <li>Deployed AI-ready infrastructure on AWS</li>
-        <li>Integrated ML workloads in containerized environments</li>
-        <li>Optimized GPU-based cloud compute resources</li>
+        <li>Managed EKS clusters</li>
+        <li>Rolling deployments & scaling</li>
+        <li>Optimized container workloads</li>
       </ul>
     </div>
 
@@ -241,7 +232,6 @@ footer{
 
 <section id="tools">
   <h2 class="section-title">Core Technologies</h2>
-
   <div class="grid">
 
     <div class="card">
@@ -279,7 +269,7 @@ footer{
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-  <p style="text-align:center;color:var(--subtext)">
+  <p style="text-align:center;color:var(--sub)">
     Email: malviyashashank24@gmail.com <br>
     LinkedIn: linkedin.com/in/shashank-malviya-devops <br>
     GitHub: github.com/shashankmalv
