@@ -3,167 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shashank Malviya | DevOps | Cloud | AI Engineer</title>
+<title>Shashank Malviya | DevOps Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#0f2027;color:#fff;overflow-x:hidden;cursor:none;transition:.4s}
-.light{background:#f4f7fa;color:#111}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+  background:linear-gradient(135deg,#0f0f1a,#141427,#1b1b32);
+  color:#eaeaff;
+  overflow-x:hidden;
+  cursor:none;
+  transition:.4s;
+}
 
-/* Custom Cursor */
-.cursor{width:15px;height:15px;border:2px solid #00c6ff;border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
-.cursor-follower{width:40px;height:40px;background:#00c6ff33;border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);z-index:9998}
+/* ===== Custom Cursor ===== */
+.cursor{
+  width:14px;height:14px;
+  border:2px solid #00f5ff;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+}
+.cursor-follower{
+  width:35px;height:35px;
+  background:#00f5ff22;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:9998;
+  transition:.15s;
+}
 
-/* Particle */
-canvas#particles{position:fixed;top:0;left:0;z-index:-3}
-canvas#threeCanvas{position:absolute;top:0;left:0;z-index:-2}
+/* ===== Navbar ===== */
+nav{
+  position:fixed;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+  width:85%;
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:30px;
+  z-index:1000;
+}
+nav a{
+  color:#cfd3ff;
+  text-decoration:none;
+  margin:0 18px;
+  font-weight:500;
+}
+nav a:hover{color:#00f5ff}
 
-/* Glow */
-.glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#00c6ff55,transparent 70%);pointer-events:none;z-index:-1;transform:translate(-50%,-50%)}
+/* ===== Hero ===== */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+.hero h1{
+  font-size:72px;
+  font-weight:800;
+  background:linear-gradient(90deg,#00f5ff,#7c5cff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{
+  margin-top:20px;
+  font-size:20px;
+  opacity:.85;
+}
+.btn{
+  margin:25px 15px;
+  padding:14px 35px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00f5ff,#7c5cff);
+  color:#111;
+  font-weight:600;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(0,245,255,.4);
+}
 
-/* Nav */
-nav{position:fixed;width:90%;top:20px;left:5%;padding:15px 30px;display:flex;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(255,255,255,0.08);border-radius:20px;z-index:1000}
-nav a{color:inherit;text-decoration:none;margin:0 15px}
-.toggle{cursor:pointer}
-
-/* Hero */
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
-.hero h1{font-size:70px;font-weight:800}
-.gradient{background:linear-gradient(90deg,#00c6ff,#ff00cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.liquid{position:absolute;width:600px;height:600px;background:linear-gradient(45deg,#00c6ff,#ff00cc);filter:blur(120px);opacity:.4;border-radius:40%;animation:morph 8s infinite alternate ease-in-out;z-index:-1}
-@keyframes morph{0%{border-radius:40% 60% 60% 40%/40% 40% 60% 60%}100%{border-radius:60% 40% 40% 60%/60% 60% 40% 40%}}
-.btn{display:inline-block;padding:15px 35px;margin:20px;border-radius:50px;background:linear-gradient(90deg,#00c6ff,#ff00cc);color:#fff;text-decoration:none;font-weight:600;transition:.2s;position:relative}
-
-/* Sections */
-section{padding:150px 10%;opacity:0;transform:translateY(100px);transition:1s}
+/* ===== Sections ===== */
+section{
+  padding:140px 10%;
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s;
+}
 section.show{opacity:1;transform:translateY(0)}
-.card{padding:40px;border-radius:25px;backdrop-filter:blur(20px);background:rgba(255,255,255,0.08);transition:.4s}
-.card:hover{transform:scale(1.03);box-shadow:0 30px 60px rgba(0,0,0,0.4)}
 
-/* Skills */
-.skill{margin-bottom:25px}
-.bar{height:8px;background:#ffffff33;border-radius:10px;overflow:hidden}
-.progress{height:100%;width:0%;background:linear-gradient(90deg,#00c6ff,#ff00cc);transition:1.5s ease}
+.section-title{
+  font-size:42px;
+  margin-bottom:60px;
+  text-align:center;
+}
 
-/* Timeline */
-.timeline{position:relative;max-width:800px;margin:auto}
-.timeline::before{content:'';position:absolute;left:50%;width:4px;height:100%;background:#00c6ff;transform:translateX(-50%)}
-.timeline-item{position:relative;width:50%;padding:20px 40px}
-.timeline-item:nth-child(odd){left:0;text-align:right}
-.timeline-item:nth-child(even){left:50%}
-.timeline-item::before{content:'';position:absolute;top:25px;width:20px;height:20px;border-radius:50%;background:#ff00cc;right:-10px}
-.timeline-item:nth-child(even)::before{left:-10px}
+/* ===== Glass Cards ===== */
+.card{
+  padding:50px;
+  border-radius:30px;
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
 
-footer{text-align:center;padding:60px}
+/* ===== Image Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.grid img{
+  width:100%;
+  border-radius:20px;
+  transition:.4s;
+}
+.grid img:hover{
+  transform:scale(1.05);
+}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding:60px;
+  opacity:.6;
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
-<div class="glow"></div>
 
 <nav>
   <h3>Shashank Malviya</h3>
   <div>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
+    <a href="#work">Work</a>
     <a href="#contact">Contact</a>
-    <span class="toggle" onclick="toggleTheme()">🌗</span>
   </div>
 </nav>
 
 <section class="hero">
-  <canvas id="threeCanvas"></canvas>
-  <div class="liquid"></div>
-  <h1>Hi, I'm <span class="gradient">Shashank</span></h1>
-  <p>DevOps Engineer | Cloud Architect | AI Infrastructure Specialist</p>
+  <h1>DevOps • Cloud • AI</h1>
+  <p>Designing scalable infrastructure & intelligent automation systems.</p>
   <div>
-    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" target="_blank" class="btn">LinkedIn</a>
-    <a href="https://github.com/shashankmalv?tab=repositories" target="_blank" class="btn">GitHub</a>
+    <a href="https://www.linkedin.com/in/shashank-malviya-devops/" class="btn" target="_blank">LinkedIn</a>
+    <a href="https://github.com/shashankmalv?tab=repositories" class="btn" target="_blank">GitHub</a>
     <a href="mailto:malviyashashank24@gmail.com" class="btn">Email</a>
   </div>
 </section>
 
 <section id="about">
-<div class="card">
-<h2>Professional Summary</h2>
-<p>DevOps & Cloud Engineer specializing in AWS infrastructure, Kubernetes orchestration, CI/CD automation, and AI-driven cloud systems. I build scalable, secure and production-ready platforms.</p>
-</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="card">
+    DevOps & Cloud Engineer specializing in AWS, Kubernetes, Terraform and AI Infrastructure.
+    I build secure, scalable and production-ready cloud environments with modern automation practices.
+  </div>
 </section>
 
-<section id="skills">
-<div class="card">
-<h2>Technical Skills</h2>
-<div class="skill"><span>AWS</span><div class="bar"><div class="progress" data-width="90%"></div></div></div>
-<div class="skill"><span>Kubernetes</span><div class="bar"><div class="progress" data-width="85%"></div></div></div>
-<div class="skill"><span>Terraform</span><div class="bar"><div class="progress" data-width="80%"></div></div></div>
-<div class="skill"><span>CI/CD</span><div class="bar"><div class="progress" data-width="88%"></div></div></div>
-</div>
-</section>
-
-<section id="experience">
-<div class="card">
-<h2>Experience Timeline</h2>
-<div class="timeline">
-<div class="timeline-item"><h3>DevOps Engineer</h3><p>Automated CI/CD & Kubernetes deployment systems.</p></div>
-<div class="timeline-item"><h3>Cloud Architect</h3><p>Designed scalable AWS infrastructure & security architecture.</p></div>
-<div class="timeline-item"><h3>AI Infrastructure</h3><p>Deployed ML models using containerized MLOps pipelines.</p></div>
-</div>
-</div>
+<section id="work">
+  <h2 class="section-title">Cloud & AI Work</h2>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cloud Architecture">
+    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd" alt="Kubernetes">
+    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f" alt="AI Infrastructure">
+  </div>
 </section>
 
 <section id="contact">
-<div class="card">
-<h2>Contact</h2>
-<p>Email: malviyashashank24@gmail.com</p>
-<p>LinkedIn: linkedin.com/in/shashank-malviya-devops</p>
-<p>GitHub: github.com/shashankmalv</p>
-</div>
+  <h2 class="section-title">Contact</h2>
+  <div class="card">
+    <p>Email: malviyashashank24@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/shashank-malviya-devops</p>
+    <p>GitHub: github.com/shashankmalv</p>
+  </div>
 </section>
 
 <footer>© 2026 Shashank Malviya</footer>
 
 <script>
-// Theme
-function toggleTheme(){document.body.classList.toggle("light")}
-
-// Scroll
+/* Scroll Reveal */
 const sections=document.querySelectorAll("section")
-window.addEventListener("scroll",()=>{sections.forEach(sec=>{if(sec.getBoundingClientRect().top<window.innerHeight-100){sec.classList.add("show");if(sec.id==="skills"){document.querySelectorAll(".progress").forEach(bar=>{bar.style.width=bar.getAttribute("data-width")})}}})})
+window.addEventListener("scroll",()=>{
+ sections.forEach(sec=>{
+  if(sec.getBoundingClientRect().top<window.innerHeight-100){
+   sec.classList.add("show")
+  }
+ })
+})
 
-// Magnetic
-document.querySelectorAll(".btn").forEach(btn=>{btn.addEventListener("mousemove",e=>{const r=btn.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`});btn.addEventListener("mouseleave",()=>btn.style.transform="translate(0,0)")})
-
-// Cursor
-const c=document.querySelector(".cursor"),f=document.querySelector(".cursor-follower")
-document.addEventListener("mousemove",e=>{c.style.left=e.clientX+"px";c.style.top=e.clientY+"px";f.style.left=e.clientX+"px";f.style.top=e.clientY+"px";document.querySelector(".glow").style.left=e.clientX+"px";document.querySelector(".glow").style.top=e.clientY+"px"})
-
-// Particles
-const canvas=document.getElementById("particles"),ctx=canvas.getContext("2d")
-canvas.width=window.innerWidth;canvas.height=window.innerHeight
-let particles=[]
-for(let i=0;i<100;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,d:Math.random()*1})}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#ffffff88";particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.y+=p.d;if(p.y>canvas.height)p.y=0});requestAnimationFrame(draw)}draw()
-
-// Three.js
-const scene=new THREE.Scene()
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
-const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('threeCanvas'),alpha:true})
-renderer.setSize(window.innerWidth,window.innerHeight)
-const geometry=new THREE.TorusKnotGeometry(1,0.4,100,16)
-const material=new THREE.MeshStandardMaterial({color:0x00c6ff,metalness:0.7,roughness:0.2})
-const knot=new THREE.Mesh(geometry,material)
-scene.add(knot)
-const light=new THREE.PointLight(0xffffff,1);light.position.set(5,5,5);scene.add(light)
-camera.position.z=4
-function animate(){requestAnimationFrame(animate);knot.rotation.x+=0.01;knot.rotation.y+=0.01;renderer.render(scene,camera)}animate()
+/* Cursor */
+const c=document.querySelector(".cursor")
+const f=document.querySelector(".cursor-follower")
+document.addEventListener("mousemove",e=>{
+ c.style.left=e.clientX+"px"
+ c.style.top=e.clientY+"px"
+ f.style.left=e.clientX+"px"
+ f.style.top=e.clientY+"px"
+})
 </script>
 
 </body>
