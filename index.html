@@ -6,6 +6,7 @@
 <title>Shashank Malviya | DevOps Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4ad53f6a2e.js" crossorigin="anonymous"></script>
 
 <style>
 *{
@@ -17,23 +18,27 @@
 }
 
 body{
-  min-height:100vh;
-  transition:0.5s ease;
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:white;
+  transition:0.4s ease;
   overflow-x:hidden;
 }
 
-/* Animated gradient background */
+.light{
+  background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
+  color:#111;
+}
+
+/* Animated Background */
 body::before{
   content:"";
   position:fixed;
-  width:600px;
-  height:600px;
+  width:500px;
+  height:500px;
   background:radial-gradient(circle,#00c6ff,#ff00cc);
-  filter:blur(150px);
-  top:-200px;
-  left:-200px;
+  filter:blur(140px);
+  top:-150px;
+  left:-150px;
   animation:move 8s infinite alternate ease-in-out;
   z-index:-1;
 }
@@ -43,7 +48,7 @@ body::before{
   to{transform:translateY(60px)}
 }
 
-/* NAV */
+/* Navbar */
 nav{
   position:fixed;
   width:90%;
@@ -60,15 +65,19 @@ nav{
   z-index:100;
 }
 
-.toggle{
-  background:none;
-  border:none;
-  font-size:22px;
-  cursor:pointer;
+nav a{
+  text-decoration:none;
   color:inherit;
+  margin:0 15px;
+  font-size:14px;
 }
 
-/* HERO */
+.toggle{
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* Hero */
 .hero{
   height:100vh;
   display:flex;
@@ -91,8 +100,8 @@ nav{
 }
 
 .typing{
-  font-size:28px;
-  margin-top:20px;
+  font-size:26px;
+  margin-top:15px;
 }
 
 .cursor{
@@ -103,13 +112,6 @@ nav{
   50%{opacity:0}
 }
 
-.hero p{
-  margin-top:20px;
-  max-width:600px;
-  opacity:0.8;
-}
-
-/* Sections */
 section{
   padding:120px 10%;
 }
@@ -117,6 +119,7 @@ section{
 .section-title{
   font-size:40px;
   margin-bottom:60px;
+  text-align:center;
 }
 
 /* Glass Cards */
@@ -127,30 +130,49 @@ section{
 }
 
 .card{
-  padding:40px;
+  padding:30px;
   border-radius:25px;
   backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.2);
   transition:0.4s;
-  transform-style:preserve-3d;
 }
 
 .card:hover{
-  transform:rotateX(6deg) rotateY(6deg) scale(1.05);
+  transform:translateY(-10px) scale(1.05);
   box-shadow:0 30px 60px rgba(0,0,0,0.4);
 }
 
-footer{
+/* Tools Section */
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:30px;
   text-align:center;
-  padding:40px 0;
-  opacity:0.7;
 }
 
-/* Light Mode */
-.light{
-  background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
-  color:#111;
+.tool{
+  padding:20px;
+  border-radius:20px;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+  transition:0.3s;
+}
+
+.tool:hover{
+  transform:scale(1.1);
+}
+
+.tool i{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:40px;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -158,20 +180,35 @@ footer{
 <body>
 
 <nav>
-  <h2>Shashank Malviya</h2>
-  <button class="toggle" onclick="toggleTheme()">☀️</button>
+  <h3>Shashank Malviya</h3>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#tools">Tools</a>
+    <a href="#projects">Projects</a>
+    <span class="toggle" onclick="toggleTheme()">☀️</span>
+  </div>
 </nav>
 
 <section class="hero">
   <h1>Hi, I'm <span class="gradient">Shashank</span></h1>
   <h3 class="typing"><span id="typing-text"></span><span class="cursor">|</span></h3>
   <p>
-    DevOps Engineer passionate about building scalable cloud infrastructure,
-    Kubernetes systems, CI/CD pipelines and enterprise monitoring solutions.
+    DevOps Engineer with 3+ years of experience in AWS, Kubernetes,
+    Terraform and Enterprise Monitoring solutions.
   </p>
 </section>
 
-<section>
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="card">
+    Experienced DevOps & Cloud Engineer skilled in building scalable,
+    automated and secure infrastructure. Strong expertise in CI/CD,
+    Kubernetes orchestration, monitoring optimization and infrastructure as code.
+  </div>
+</section>
+
+<section id="skills">
   <h2 class="section-title">Core Expertise</h2>
   <div class="grid">
     <div class="card">
@@ -193,13 +230,30 @@ footer{
   </div>
 </section>
 
-<section>
-  <h2 class="section-title">Highlighted Work</h2>
-  <div class="card">
-    • Built scalable CI/CD pipelines<br><br>
-    • Implemented Infrastructure as Code<br><br>
-    • Designed Kubernetes monitoring stack<br><br>
-    • Optimized enterprise log analytics systems
+<section id="tools">
+  <h2 class="section-title">Tools & Technologies</h2>
+  <div class="tools">
+    <div class="tool"><i class="fab fa-aws"></i><p>AWS</p></div>
+    <div class="tool"><i class="fab fa-docker"></i><p>Docker</p></div>
+    <div class="tool"><i class="fas fa-network-wired"></i><p>Kubernetes</p></div>
+    <div class="tool"><i class="fas fa-code-branch"></i><p>Terraform</p></div>
+    <div class="tool"><i class="fas fa-chart-line"></i><p>Prometheus</p></div>
+    <div class="tool"><i class="fas fa-server"></i><p>Splunk</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Highlighted Projects</h2>
+  <div class="grid">
+    <div class="card">
+      CI/CD Automation Pipeline using Jenkins & GitHub Actions
+    </div>
+    <div class="card">
+      Kubernetes Observability Stack (Prometheus + Grafana)
+    </div>
+    <div class="card">
+      Infrastructure Automation using Terraform
+    </div>
   </div>
 </section>
 
@@ -209,41 +263,22 @@ footer{
 
 <script>
 // Typing Effect
-const roles = [
-  "DevOps Engineer",
-  "Cloud Architect",
-  "Kubernetes Specialist",
-  "Automation Expert",
-  "Monitoring Engineer"
-];
-
-let i = 0;
-let j = 0;
-let current = "";
-let isDeleting = false;
+const roles=["DevOps Engineer","Cloud Architect","Kubernetes Specialist","Automation Expert"];
+let i=0,j=0,current="",isDeleting=false;
 
 function type(){
-  current = roles[i];
+  current=roles[i];
   if(!isDeleting){
-    document.getElementById("typing-text").innerHTML = current.substring(0,j++);
-    if(j > current.length){
-      isDeleting = true;
-      setTimeout(type,1000);
-      return;
-    }
-  } else {
-    document.getElementById("typing-text").innerHTML = current.substring(0,j--);
-    if(j < 0){
-      isDeleting = false;
-      i = (i + 1) % roles.length;
-    }
+    document.getElementById("typing-text").innerHTML=current.substring(0,j++);
+    if(j>current.length){isDeleting=true;setTimeout(type,1000);return;}
+  }else{
+    document.getElementById("typing-text").innerHTML=current.substring(0,j--);
+    if(j<0){isDeleting=false;i=(i+1)%roles.length;}
   }
   setTimeout(type,70);
 }
-
 type();
 
-// Theme Toggle
 function toggleTheme(){
   document.body.classList.toggle("light");
 }
